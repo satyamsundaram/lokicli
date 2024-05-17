@@ -75,12 +75,12 @@ lokicli apps --project s2s
 (similar naming convention to how it is on argo)
 ```
 event-exporter-default-monitoring
-intentmatch-default-prod
-intentmatch-restart-cron-cron-prod
-nero-v2-man.m-stage
+reasonmatch-default-prod
+reasonmatch-restart-cron-cron-prod
+hero-v2-abc.d-stage
 nn-splitter-wrapper-prod
 sonarqube-default-sonarqube
-topix-data-pipeline-aggregator-default-prod
+data-pipeline-aggregator-default-prod
 ```
 
 ### 6. Get logs for an application
@@ -91,30 +91,30 @@ Copy its app name from the above list and paste it as shown:
 lokicli logs -h
 
 # Get logs for the specified app (default: last 1 hour and 1000 logs)
-lokicli logs -a nitro-default-prod
-lokicli logs --app nitro-default-prod
+lokicli logs -a metro-default-prod
+lokicli logs --app metro-default-prod
 
 # Get 5000 logs from the last 2 hrs
-lokicli logs -a nitro-default-prod --since 2h --limit 5000
+lokicli logs -a metro-default-prod --since 2h --limit 5000
 
 # loki returns logs  backwards in time, aka from the latest timestamp to the oldest timestamp
-lokicli logs -a topix-nero-prod -f 2024-01-22T00:00:00Z -t 2024-01-22T05:00:00Z -l 50000
-lokicli logs -a spacy-en-default-prod --from_time 2024-01-22T00:30:00Z --to_time 2024-01-22T06:00:00Z -l 400000
+lokicli logs -a topic-hero-prod -f 2024-01-22T00:00:00Z -t 2024-01-22T05:00:00Z -l 50000
+lokicli logs -a lacy-en-default-prod --from_time 2024-01-22T00:30:00Z --to_time 2024-01-22T06:00:00Z -l 400000
 
 # invert-match a query
-lokicli logs -a intentmatch-default-prod -f 2024-01-22T00:00:00Z -t 2024-01-22T05:00:00Z -l 5000 --query "Error" --invert-match
+lokicli logs -a reasonmatch-default-prod -f 2024-01-22T00:00:00Z -t 2024-01-22T05:00:00Z -l 5000 --query "Error" --invert-match
 # or using short hand flag
-lokicli logs -a intentmatch-default-prod -f 2024-01-22T00:00:00Z -t 2024-01-22T05:00:00Z -l 5000 -q "Error" -i
+lokicli logs -a reasonmatch-default-prod -f 2024-01-22T00:00:00Z -t 2024-01-22T05:00:00Z -l 5000 -q "Error" -i
 
 # regex pattern matching
-lokicli logs -a intentmatch-default-prod -f 2024-01-22T00:00:00Z -t 2024-01-22T05:00:00Z -l 5000 --query "Error"
-lokicli logs -a intentmatch-default-prod --from_time=2024-01-22T00:00:00Z -t 2024-01-22T05:00:00Z -l 5000 -q "\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}"
-lokicli logs -a intentmatch-default-prod -f 2024-01-22T00:00:00Z -t 2024-01-22T05:00:00Z -l 5000 --query=".*/autoopt/.*"
+lokicli logs -a reasonmatch-default-prod -f 2024-01-22T00:00:00Z -t 2024-01-22T05:00:00Z -l 5000 --query "Error"
+lokicli logs -a reasonmatch-default-prod --from_time=2024-01-22T00:00:00Z -t 2024-01-22T05:00:00Z -l 5000 -q "\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}"
+lokicli logs -a reasonmatch-default-prod -f 2024-01-22T00:00:00Z -t 2024-01-22T05:00:00Z -l 5000 --query=".*/autoopt/.*"
 
 # some more preprocessing
-lokicli logs -a spacy-en-default-prod -f 2024-01-22T06:30:00Z -t 2024-01-22T10:00:00Z -l 4000 > logs
-lokicli logs -a spacy-en-default-prod -f 2024-01-22T06:30:00Z -t 2024-01-22T10:00:00Z -l 4000 | less
-lokicli logs -a intentmatch-default-prod -f 2024-01-22T00:00:00Z -t 2024-01-22T05:00:00Z -l 5000 -q ".*/autoopt/.*" | grep "autoopt"
+lokicli logs -a lacy-en-default-prod -f 2024-01-22T06:30:00Z -t 2024-01-22T10:00:00Z -l 4000 > logs
+lokicli logs -a lacy-en-default-prod -f 2024-01-22T06:30:00Z -t 2024-01-22T10:00:00Z -l 4000 | less
+lokicli logs -a reasonmatch-default-prod -f 2024-01-22T00:00:00Z -t 2024-01-22T05:00:00Z -l 5000 -q ".*/autoopt/.*" | grep "autoopt"
 ```
 
 ### Help

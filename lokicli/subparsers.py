@@ -77,7 +77,7 @@ class Subparsers:
     def _create_get_logs_parser(self):
         try:
             get_logs_parser = self.subparsers.add_parser("logs", help="Get logs for an app in a certain time period [default = last 1 hour]  (Use -h for help)")
-            get_logs_parser.add_argument("--app", "-a", required=True, help="[REQUIRED] App name to retrieve logs for, eg: nitro-default-prod")
+            get_logs_parser.add_argument("--app", "-a", required=True, help="[REQUIRED] App name to retrieve logs for, eg: metro-default-prod")
             get_logs_parser.add_argument("--limit", "-l", type=int, default=self.defaultLimit, help="[OPTIONAL] Limit the number of logs to fetch (default=1000, max=500000)")
             get_logs_parser.add_argument("--from_time", "-f", help="From date and time (format, eg: 2024-01-22T10:30:00Z)")
             get_logs_parser.add_argument("--to_time", "-t", help="To date and time (format, eg: 2024-01-22T12:30:00Z)")
@@ -92,18 +92,18 @@ class Subparsers:
             get_logs_parser.usage = """
             (Either specify from_time and to_time or specify since, default = last 1 hour)
 
-            lokicli logs -a nitro-default-prod                   # Get logs for the specified app (default: last 1 hour and 1000 logs)
-            lokicli logs --app nitro-default-prod
-            lokicli logs -a nitro-default-prod --from_time 2024-01-22T10:00:00Z --to_time 2024-01-22T12:00:00Z   # Get logs for the specified app in a specific time range
-            lokicli logs -a nitro-default-prod --since 2h        # Get logs for the specified app for the last 2 hours                                            
-            lokicli logs -a nitro-default-prod --since 30m --limit 5000  # Get 5000 logs for the last 30 minutes
-            lokicli logs -a nitro-default-prod --query '\\d{4}-\\d{2}-\\d{2}'      # Get logs for the specified app with a specific query (it follows Google RE2 syntax)                                                                                       
-            lokicli logs -a sms-bing-prod --project s2s          # Get logs for the specified app in the specified project
-            lokicli logs -a sms-bing-prod --invert-match -q '\\d{4}-\\d{2}-\\d{2}'      # Get logs for the specified app that do not match the query
-            lokicli logs -a sms-bing-prod -i -q '\\d{4}-\\d{2}-\\d{2}'      # Get logs for the specified app that do not match the query
-            lokicli logs -a sms-bing-prod -c 5 -q '\\d{4}-\\d{2}-\\d{2}'      # Get context on the logs for the specified app that match the query
-            lokicli logs -a sms-bing-prod -o 5 -q '\\d{4}-\\d{2}-\\d{2}'      # Get older context on the logs for the specified app that match the query
-            lokicli logs -a sms-bing-prod -n 5 -q '\\d{4}-\\d{2}-\\d{2}'      # Get newer context on the logs for the specified app that match the query
+            lokicli logs -a metro-default-prod                   # Get logs for the specified app (default: last 1 hour and 1000 logs)
+            lokicli logs --app metro-default-prod
+            lokicli logs -a metro-default-prod --from_time 2024-01-22T10:00:00Z --to_time 2024-01-22T12:00:00Z   # Get logs for the specified app in a specific time range
+            lokicli logs -a metro-default-prod --since 2h        # Get logs for the specified app for the last 2 hours
+            lokicli logs -a metro-default-prod --since 30m --limit 5000  # Get 5000 logs for the last 30 minutes
+            lokicli logs -a metro-default-prod --query '\\d{4}-\\d{2}-\\d{2}'      # Get logs for the specified app with a specific query (it follows Google RE2 syntax)
+            lokicli logs -a sms-ring-prod --project s2s          # Get logs for the specified app in the specified project
+            lokicli logs -a sms-ring-prod --invert-match -q '\\d{4}-\\d{2}-\\d{2}'      # Get logs for the specified app that do not match the query
+            lokicli logs -a sms-ring-prod -i -q '\\d{4}-\\d{2}-\\d{2}'      # Get logs for the specified app that do not match the query
+            lokicli logs -a sms-ring-prod -c 5 -q '\\d{4}-\\d{2}-\\d{2}'      # Get context on the logs for the specified app that match the query
+            lokicli logs -a sms-ring-prod -o 5 -q '\\d{4}-\\d{2}-\\d{2}'      # Get older context on the logs for the specified app that match the query
+            lokicli logs -a sms-ring-prod -n 5 -q '\\d{4}-\\d{2}-\\d{2}'      # Get newer context on the logs for the specified app that match the query
             """
         except Exception as e:
             raise e
